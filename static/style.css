@@ -1,0 +1,193 @@
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 40px;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 40px;
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+    .form-col {
+        flex-basis: 30%; /* Set the initial width to 30% */
+        flex-shrink: 0; /* Prevent it from shrinking below its basis */
+    }
+    .tasks-col {
+        flex-basis: 70%; /* Set the initial width to 70% */
+        flex-shrink: 0; /* Prevent it from shrinking below its basis */
+        max-height: 500px; /* Adjust this value as needed */
+        overflow-y: auto;
+        padding: 20px 10px; /* Added vertical padding */
+    }
+    /* Style for the scrollbar (optional, for better appearance) */
+    .tasks-col::-webkit-scrollbar {
+        width: 12px; /* Increased width for better grab area */
+    }
+    .tasks-col::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        padding-top: 20px; /* Match top padding of container */
+        padding-bottom: 20px; /* Match bottom padding of container */
+        border-radius: 4px; /* Optional: round the track */
+    }
+    .tasks-col::-webkit-scrollbar-thumb {
+        background: #a0a0a0; /* Slightly darker thumb */
+        border-radius: 6px; /* Slightly more rounded */
+        border: 2px solid transparent; /* Add a small border */
+        background-clip: padding-box; /* Make the background respect the border */
+    }
+    .tasks-col::-webkit-scrollbar-thumb:hover {
+        background: #777;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-weight: bold;
+    }
+    input[type="time"]{
+        width: 140px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+
+    }
+    input[type="date"]{
+        width: 200px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+
+    }
+    input[type="text"],
+    textarea {
+        width: calc(100% - 16px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+    button[type="submit"] {
+        background-color: #5cb85c;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    button[type="submit"]:hover {
+        background-color: #4cae4c;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+    li {
+        color: #d9534f;
+        margin-bottom: 5px;
+    }
+    table {
+        width: 95%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+        color: #555;
+        font-weight: bold;
+    }
+    tr:hover {
+        background-color: #f9f9f9;
+    }
+    td a {
+        color: #007bff;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+    td a:hover {
+        text-decoration: underline;
+    }
+    table th:nth-child(1),
+    table td:nth-child(1) {
+        width: 100px;
+    }
+    table th:nth-child(2),
+    table td:nth-child(2) {
+        width: 150px;
+    }
+    .completed {
+        text-decoration: line-through;
+        color: #777;
+    }
+    .button-link {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    .button-link:hover {
+        background-color: #0056b3;
+    }
+    .button-delete {
+        background-color: #d9534f;
+    }
+    .button-delete:hover {
+        background-color: #c9302c;
+    }
+    .button-complete {
+        background-color: #5cb85c;
+    }
+    .button-complete:hover {
+        background-color: #4cae4c;
+    }
+    .button-incomplete {
+        background-color: #f0ad4e;
+    }
+    .button-incomplete:hover {
+        background-color: #eea236;
+    }
+    h2 {
+        color: #333;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        text-align: center;
+    }

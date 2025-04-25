@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>📝 Todo List</h1>
+    <div class="container">
+        <div class="form-col">
+            <h2>{{ '📌 Edit Task' if task else '📌 Add Task' }}</h2>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form method="POST" action="{{ url_for('add_task') }}">
+                {% if task %}
+                    <input type="hidden" name="task_id" value="{{ task[0] }}">
+                {% endif %}
+                <label for="title">📝 Title:</label>
+                <input type="text" id="title" name="title" value="{{ task[1] if task else '' }}" required><br>
+
+                <label for="description">🗒️ Description:</label>
+                <textarea id="description" name="description">{{ task[2] if task else '' }}</textarea><br>
+
+                <div style="display: flex; gap: 20px;">
+                    <div>
+                        <label for="start_date">📅 Start Date:</label>
+                        <input type="date" id="start_date" name="start_date" value="{{ task[3] if task else '' }}" required><br>
+                    </div>
+                    <div>
+                        <label for="start_time">⏰ Start Time:</label>
+                        <input type="time" id="start_time" name="start_time" value="{{ task[4] if task else '' }}" required><br>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px;">
+                    <div>
+                        <label for="end_date">📅 End Date:</label>
+                        <input type="date" id="end_date" name="end_date" value="{{ task[5] if task else '' }}" required><br>
+                    </div>
+                    <div>
+                        <label for="end_time">⏰ End Time:</label>
+                        <input type="time" id="end_time" name="end_time" value="{{ task[6] if task else '' }}" required><br>
+                    </div>
+                </div>
+
+                <button type="submit">{{ '✏️ Update' if task else '➕ Add' }} Task</button>
+            </form>
+        </div>
+        <div class="tasks-col">
+            <h2>📋 Task List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>📝 Title</th>
+                        <th>🗒️ Description</th>
+                        <th>⏳ Start</th>
+                        <th>⏳ End</th>
+                        <th>⚙️ Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td class="{{ 'completed' if task[7] }}">
+                            {{ task[1] }}
+                        </td>
+                        <td class="{{ 'completed' if task[7] }}">
+                            {{ task[2] }}
+                        </td>
+                        <td class="{{ 'completed' if task[7] }}">
+                            {{ task[3] }} {{ task[4] }}
+                        </td>
+                        <td class="{{ 'completed' if task[7] }}">
+                            {{ task[5] }} {{ task[6] }}
+                        </td>
+                        <td>
+                            <a href="{{ url_for('index', edit=task[0]) }}" class="button-link">✏️</a>
+                            <a href="{{ url_for('delete', task_id=task[0]) }}" class="button-link button-delete">🗑️</a>
+                            {% if task[7] %}
+                                <a href="{{ url_for('toggle', task_id=task[0]) }}" class="button-link button-incomplete">❌</a>
+                            {% else %}
+                                <a href="{{ url_for('toggle', task_id=task[0]) }}" class="button-link button-complete">✅</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr><td colspan="5" style="text-align: center; padding: 20px;">No tasks yet!</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

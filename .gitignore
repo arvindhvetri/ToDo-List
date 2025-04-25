@@ -1,0 +1,8 @@
+# Python-specific
+.venv
+
+# Environment files
+config/db.env
+
+# IDE-specific (add if you use these)
+.vscode/
