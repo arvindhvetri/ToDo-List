@@ -1,26 +1,17 @@
 from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_mysqldb import MySQL
 from datetime import datetime
-from dotenv import load_dotenv
 import os
 
 app = Flask(__name__)
 
-dotenv_path = os.path.join(os.path.dirname(__file__), 'config', 'db.env')
-load_dotenv(dotenv_path)
+# Configure MySQL from environment variables
+app.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST', 'localhost')
+app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER', 'default_user')
+app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD', 'default_password')
+app.config['MYSQL_DB'] = os.environ.get('MYSQL_DB', 'default_db')
 
-# Retrieve the database credentials from the environment variables
-db_host = os.getenv("DB_HOST")
-db_user = os.getenv("DB_USER")
-db_password = os.getenv("DB_PASSWORD")
-db_name = os.getenv("DB_NAME")
-
-# Use these variables to configure your Flask application (assuming you have an 'app' object)
-app.config['MYSQL_HOST'] = db_host
-app.config['MYSQL_USER'] = db_user
-app.config['MYSQL_PASSWORD'] = db_password
-app.config['MYSQL_DB'] = db_name
-
+# Initialize MySQL
 mysql = MySQL(app)
 
 @app.route('/')
