@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: two-tier-app
-          image: trainwithshubham/flaskapp:latest
+          image: arvindh01/todolist:latest
           env:
             - name: MYSQL_HOST
               value: mysql          # this is your mysql's service clusture IP, Make sure to change it with yours
@@ -27,5 +27,5 @@ spec:
             - name: MYSQL_DB
               value: "mydb"
           ports:
-            - containerPort: 5000
+            - containerPort: 8000
           imagePullPolicy: Always
